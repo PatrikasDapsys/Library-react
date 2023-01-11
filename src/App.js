@@ -1,17 +1,18 @@
-import Featured from "./components/Features";
-import Highlights from "./components/Highlights";
-import Landing from "./components/Landing";
+import Footer from "./components/Footer";
 import Nav from "./components/Nav";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
+    <Router>
       <Nav />
-      <Landing />
-      <Highlights />
-      <Featured />
-    </div>
+      <Switch>
+        <Route path="/" exact component={Home} />
+      </Switch>
+      <Footer />
+    </Router>
   );
-}
+} 
 
 export default App;
