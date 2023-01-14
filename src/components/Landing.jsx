@@ -16,7 +16,7 @@ const Landing = () => {
               <a href="#features">
                 <button className="btn">Browse books</button>
               </a>
-            </div>
+           </div>
             <figure className="header__img--wrapper">
               <img src={UndrawBooks} alt="" />
             </figure>

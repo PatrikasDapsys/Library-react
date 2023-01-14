@@ -5,7 +5,7 @@ import Featured from "../components/Features";
 import Highlights from "../components/Highlights";
 import Landing from "../components/Landing";
 
-const Home = () => {
+const  Home = () => {
   return (
     <>
       <Landing />
