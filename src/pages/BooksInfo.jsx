@@ -1,8 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import Price from "../components/ui/Price";
+import Rating from "../components/ui/Rating";
 
-const BooksInfo = () => {
+const BooksInfo = ({ books }) => {
+  const { id } = useParams();   
+  const book = books.find(book => +book.id === +id);
+  console.log(book)
+
   return (
     <div id="books__body">
       <main id="books__main">
@@ -18,12 +24,42 @@ const BooksInfo = () => {
             </div>
             <div className="book__selected">
               <figure className="book__selected--figure">
-                <img src="https://covers.openlibrary.org/b/id/8091016-L.jpg" alt="" className="book__selected--img" />
+                <img
+                  src={book.url}
+                  alt=""
+                  className="book__selected--img"
+                />
               </figure>
               <div className="book__selected--description">
-                <h2 className="book__selected--title">Name</h2>
-                <FontAwesomeIcon icon="star" />
+                <h2 className="book__selected--title">{book.title}</h2>
+                <Rating rating={book.rating} />
+                <div className="book__selected--price">
+                  <Price salePrice={book.salePrice} originalPrice={book.originalPrice} />
+                </div>
+                <div className="book__summary">
+                  <h3 className="book__summary--title">Summary</h3>
+                  <p className="book__summary--para">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Magni quasi cumque consequatur? Eligendi sit vero voluptates
+                    quia accusantium cum inventore et eveniet, quo laborum alias
+                    cupiditate similique ratione necessitatibus assumenda!
+                  </p>
+                  <p className="book__summary--para">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Magni quasi cumque consequatur? Eligendi sit vero voluptates
+                    quia accusantium cum inventore et eveniet, quo laborum alias
+                    cupiditate similique ratione necessitatibus assumenda!
+                  </p>
+                  <button className="btn">Add to cart</button>
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div className="books__container">
+          <div className="row">
+            <div className="book__selected--top">
+              <h2 className="books__selected--title--top">Reccomended Books</h2>
             </div>
           </div>
         </div>
