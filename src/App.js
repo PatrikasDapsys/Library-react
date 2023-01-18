@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Books from "./pages/Books";
 import { books } from "./data";
 import BooksInfo from "./pages/BooksInfo";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           exact
           element={<BooksInfo books={books} />}
         />
+        <Route path="/cart" exact element={<Cart books={books} />} />   
       </Routes>
       <Footer />
     </Router>
