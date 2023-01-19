@@ -6,8 +6,19 @@ import Books from "./pages/Books";
 import { books } from "./data";
 import BooksInfo from "./pages/BooksInfo";
 import Cart from "./pages/Cart";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  function addToCart(book) {
+    setCart([...cart, book])
+  }
+
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
+
   return (
     <Router>
       <Nav />
@@ -17,9 +28,9 @@ function App() {
         <Route
           path="/books/:id"
           exact
-          element={<BooksInfo books={books} />}
+          element={<BooksInfo books={books} addToCart={addToCart} cart={cart}/>}
         />
-        <Route path="/cart" exact element={<Cart books={books} />} />   
+        <Route path="/cart" exact element={<Cart books={books} cart={cart} />} />
       </Routes>
       <Footer />
     </Router>

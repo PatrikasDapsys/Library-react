@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart = () => {
+const Cart = ({ cart }) => {
   return (
     <div>
       <div id="books__body">
@@ -17,48 +17,58 @@ const Cart = () => {
                   <span className="cart__total--header">Price</span>
                 </div>
                 <div className="cart__body">
-                  <div className="cart__item">
-                    <div className="cart__book">
-                      <img
-                        src="https://covers.openlibrary.org/b/id/8091016-L.jpg"
-                        alt=""
-                        className="cart__book--img"
+                  {cart.map((book) => {
+                    return (
+                      <>
+                      <div className="cart__item">
+                      <div className="cart__book">
+                        <img
+                          src={book.url}
+                          alt=""
+                          className="cart__book--img"
+                        />
+                      </div>
+                      <div className="cart__book--info">
+                        <span className="cart__book--title">{book.name}</span>
+                        <span className="cart__book--price">${(book.salePrice || book.originalPrice).toFixed(2)}</span>
+                        <button className="cart__book--remove">Remove</button>
+                      </div>
+                    </div>
+                    <div className="cart__quantity">
+                      <input
+                        type="number"
+                        min={0}
+                        max={99}
+                        className="cart__input"
                       />
                     </div>
-                    <div className="cart__book--info">
-                      <span className="cart__book--title">Name</span>
-                      <span className="cart__book--price">$10.00</span>
-                      <button className="cart__book--remove">Remove</button>
-                    </div>
-                  </div>
-                  <div className="cart__quantity">
-                    <input
-                      type="number"
-                      min={0}
-                      max={99}
-                      className="cart__input"
-                    />
-                  </div>
-                  <div className="cart__total">$10.00</div>
+                    <div className="cart__total">$10.00</div>
+                    </>
+                    )
+                  })}
+
                 </div>
                 <div className="total">
-                    <div className="total__item total__subtotal">
-                        <span>Subtotal</span>
-                        <span>$9.00</span>
-                    </div>
-                    <div className="total__item total__tax">
-                        <span>Tax</span>
-                        <span>$1.00</span>
-                    </div>
-                    <div className="total__item total__price">
-                        <span>Price</span>
-                        <span>$10.00</span>
-                    </div>
-                    <button className="btn btn__checkout no-cursor"
-                    onClick={() => alert(`Haven't got around to doing this yet`)}>
-                        Procced to checkout
-                    </button>
-            
+                  <div className="total__item total__subtotal">
+                    <span>Subtotal</span>
+                    <span>$9.00</span>
+                  </div>
+                  <div className="total__item total__tax">
+                    <span>Tax</span>
+                    <span>$1.00</span>
+                  </div>
+                  <div className="total__item total__price">
+                    <span>Price</span>
+                    <span>$10.00</span>
+                  </div>
+                  <button
+                    className="btn btn__checkout no-cursor"
+                    onClick={() =>
+                      alert(`Haven't got around to doing this yet`)
+                    }
+                  >
+                    Procced to checkout
+                  </button>
                 </div>
               </div>
             </div>
