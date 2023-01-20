@@ -660,6 +660,12 @@ select {
   margin: 0 24px;
 }
 
+.cart__book {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 .cart__item {
   margin-top: 24px;
   display: flex;
