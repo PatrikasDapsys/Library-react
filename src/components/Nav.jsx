@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LibraryLogo from "../assets/Library.svg";
 import { Link } from "react-router-dom";
 
-const Nav = () => {
-  function openMenu () {
+const Nav = ({ numberOfItems }) => {
+  function openMenu() {
     document.body.classList += " menu--open";
   }
-  function closeMenu () {
+  function closeMenu() {
     document.body.classList.remove("menu--open");
   }
   return (
@@ -29,13 +29,16 @@ const Nav = () => {
           </li>
           <li className="nav__list">
             <button className="btn__menu" onClick={openMenu}>
-            <FontAwesomeIcon icon="bars" />
+              <FontAwesomeIcon icon="bars" />
             </button>
           </li>
           <li className="nav__icon">
             <Link to="/cart" className="nav__link">
               <FontAwesomeIcon icon="shopping-cart" />
             </Link>
+            {numberOfItems ? (
+              <span className="cart__length">{numberOfItems}</span>
+            ) : null}
           </li>
         </ul>
         <div className="menu__backdrop">
