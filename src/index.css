@@ -502,6 +502,7 @@ BOOKS PAGE
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 67.5vh;
 }
 
 #books__main {

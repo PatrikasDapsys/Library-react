@@ -20,7 +20,6 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
   }
 
   return (
-    <div>
       <div id="books__body">
         <main id="books__main">
           <div className="books__container">
@@ -120,7 +119,6 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
           </div>
         </main>
       </div>
-    </div>
   );
 };
 
