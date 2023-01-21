@@ -658,12 +658,12 @@ select {
 .cart__body {
   display: flex;
   margin: 0 24px;
+  flex-wrap: wrap;
 }
 
 .cart__book {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .cart__item {

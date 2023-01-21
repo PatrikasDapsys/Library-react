@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Cart = ({ cart, changeQuantity }) => {
+const Cart = ({ cart, changeQuantity, removeItem }) => {
+
   const total = () => {
-    
-  }
-
-  const subTotal = () => {
-
-  }
-
+    let totalPrice = 0;
+    cart.forEach((book) => {
+      totalPrice += +Price(book);
+    });
+    return totalPrice.toFixed(2);
+  };
 
   function Price(book) {
-    return (!book.quantity ? "0" : (book.salePrice || book.originalPrice)*book.quantity).toFixed(2);  
+    return (
+      !book.quantity
+        ? "0"
+        : (book.salePrice || book.originalPrice) * book.quantity
+    ).toFixed(2);
   }
 
   return (
@@ -43,7 +47,7 @@ const Cart = ({ cart, changeQuantity }) => {
                           </div>
                           <div className="cart__book--info">
                             <span className="cart__book--title">
-                              {book.name}
+                              {book.title}
                             </span>
                             <span className="cart__book--price">
                               $
@@ -51,7 +55,10 @@ const Cart = ({ cart, changeQuantity }) => {
                                 2
                               )}
                             </span>
-                            <button className="cart__book--remove">
+                            <button
+                              className="cart__book--remove"
+                              onClick={() => removeItem(book)}
+                            >
                               Remove
                             </button>
                           </div>
@@ -62,7 +69,7 @@ const Cart = ({ cart, changeQuantity }) => {
                             min={1}
                             max={99}
                             className="cart__input"
-                            value={book.quantity} 
+                            value={book.quantity}
                             onChange={(event) =>
                               changeQuantity(book, event.target.value)
                             }
@@ -84,7 +91,7 @@ const Cart = ({ cart, changeQuantity }) => {
                   </div>
                   <div className="total__item total__price">
                     <span>Price</span>
-                    <span>$10.00</span>
+                    <span>${total()}</span>
                   </div>
                   <button
                     className="btn btn__checkout no-cursor"
